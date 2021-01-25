@@ -60,6 +60,7 @@
             this.lbl_Belastbarkeit = new System.Windows.Forms.Label();
             this.lbl_Kapazitaet = new System.Windows.Forms.Label();
             this.lbl_Pfeil = new System.Windows.Forms.Label();
+            this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.grp_Ergebnisse.SuspendLayout();
             this.grp_Spannung.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ud_Spannung)).BeginInit();
@@ -89,7 +90,7 @@
             this.grp_Ergebnisse.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.grp_Ergebnisse.Name = "grp_Ergebnisse";
             this.grp_Ergebnisse.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.grp_Ergebnisse.Size = new System.Drawing.Size(371, 482);
+            this.grp_Ergebnisse.Size = new System.Drawing.Size(371, 530);
             this.grp_Ergebnisse.TabIndex = 1;
             this.grp_Ergebnisse.TabStop = false;
             this.grp_Ergebnisse.Text = "Ergebnisse";
@@ -101,7 +102,7 @@
             this.lbl_Erg_Laden_Ladestrom.Location = new System.Drawing.Point(181, 398);
             this.lbl_Erg_Laden_Ladestrom.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_Erg_Laden_Ladestrom.Name = "lbl_Erg_Laden_Ladestrom";
-            this.lbl_Erg_Laden_Ladestrom.Size = new System.Drawing.Size(121, 15);
+            this.lbl_Erg_Laden_Ladestrom.Size = new System.Drawing.Size(155, 20);
             this.lbl_Erg_Laden_Ladestrom.TabIndex = 9;
             this.lbl_Erg_Laden_Ladestrom.Text = "1C  =  1000mA  =  1 A";
             // 
@@ -112,7 +113,7 @@
             this.lbl_Erg_Laden_AkkuTyp.Location = new System.Drawing.Point(181, 360);
             this.lbl_Erg_Laden_AkkuTyp.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_Erg_Laden_AkkuTyp.Name = "lbl_Erg_Laden_AkkuTyp";
-            this.lbl_Erg_Laden_AkkuTyp.Size = new System.Drawing.Size(30, 15);
+            this.lbl_Erg_Laden_AkkuTyp.Size = new System.Drawing.Size(36, 20);
             this.lbl_Erg_Laden_AkkuTyp.TabIndex = 8;
             this.lbl_Erg_Laden_AkkuTyp.Text = "LiPo";
             // 
@@ -123,7 +124,7 @@
             this.lbl_Erg_Laden_Kommentar3.Location = new System.Drawing.Point(41, 398);
             this.lbl_Erg_Laden_Kommentar3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_Erg_Laden_Kommentar3.Name = "lbl_Erg_Laden_Kommentar3";
-            this.lbl_Erg_Laden_Kommentar3.Size = new System.Drawing.Size(74, 15);
+            this.lbl_Erg_Laden_Kommentar3.Size = new System.Drawing.Size(92, 20);
             this.lbl_Erg_Laden_Kommentar3.TabIndex = 7;
             this.lbl_Erg_Laden_Kommentar3.Text = "- Ladestrom:";
             // 
@@ -134,7 +135,7 @@
             this.lbl_Erg_Laden_Kommentar2.Location = new System.Drawing.Point(41, 360);
             this.lbl_Erg_Laden_Kommentar2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_Erg_Laden_Kommentar2.Name = "lbl_Erg_Laden_Kommentar2";
-            this.lbl_Erg_Laden_Kommentar2.Size = new System.Drawing.Size(68, 15);
+            this.lbl_Erg_Laden_Kommentar2.Size = new System.Drawing.Size(83, 20);
             this.lbl_Erg_Laden_Kommentar2.TabIndex = 6;
             this.lbl_Erg_Laden_Kommentar2.Text = "- Akku-Typ:";
             // 
@@ -145,7 +146,7 @@
             this.lbl_Erg_Laden_Kommentar.Location = new System.Drawing.Point(41, 324);
             this.lbl_Erg_Laden_Kommentar.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_Erg_Laden_Kommentar.Name = "lbl_Erg_Laden_Kommentar";
-            this.lbl_Erg_Laden_Kommentar.Size = new System.Drawing.Size(149, 15);
+            this.lbl_Erg_Laden_Kommentar.Size = new System.Drawing.Size(188, 20);
             this.lbl_Erg_Laden_Kommentar.TabIndex = 5;
             this.lbl_Erg_Laden_Kommentar.Text = "Am Ladegerät einzustellen:";
             // 
@@ -156,7 +157,7 @@
             this.lbl_Erg_Laden_Headline.Location = new System.Drawing.Point(30, 290);
             this.lbl_Erg_Laden_Headline.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_Erg_Laden_Headline.Name = "lbl_Erg_Laden_Headline";
-            this.lbl_Erg_Laden_Headline.Size = new System.Drawing.Size(39, 15);
+            this.lbl_Erg_Laden_Headline.Size = new System.Drawing.Size(50, 20);
             this.lbl_Erg_Laden_Headline.TabIndex = 4;
             this.lbl_Erg_Laden_Headline.Text = "Laden";
             // 
@@ -167,7 +168,7 @@
             this.lbl_Erg_Belastbarkeit_A.Location = new System.Drawing.Point(41, 194);
             this.lbl_Erg_Belastbarkeit_A.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_Erg_Belastbarkeit_A.Name = "lbl_Erg_Belastbarkeit_A";
-            this.lbl_Erg_Belastbarkeit_A.Size = new System.Drawing.Size(197, 15);
+            this.lbl_Erg_Belastbarkeit_A.Size = new System.Drawing.Size(248, 20);
             this.lbl_Erg_Belastbarkeit_A.TabIndex = 3;
             this.lbl_Erg_Belastbarkeit_A.Text = "Der Akku ist belastbar mit max. 20A.";
             // 
@@ -178,7 +179,7 @@
             this.lbl_Erg_Belastbarkeit_Headline.Location = new System.Drawing.Point(30, 167);
             this.lbl_Erg_Belastbarkeit_Headline.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_Erg_Belastbarkeit_Headline.Name = "lbl_Erg_Belastbarkeit_Headline";
-            this.lbl_Erg_Belastbarkeit_Headline.Size = new System.Drawing.Size(74, 15);
+            this.lbl_Erg_Belastbarkeit_Headline.Size = new System.Drawing.Size(97, 20);
             this.lbl_Erg_Belastbarkeit_Headline.TabIndex = 2;
             this.lbl_Erg_Belastbarkeit_Headline.Text = "Belastbarkeit";
             // 
@@ -189,7 +190,7 @@
             this.lbl_Erg_Spannung_Zellenzahl.Location = new System.Drawing.Point(41, 73);
             this.lbl_Erg_Spannung_Zellenzahl.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_Erg_Spannung_Zellenzahl.Name = "lbl_Erg_Spannung_Zellenzahl";
-            this.lbl_Erg_Spannung_Zellenzahl.Size = new System.Drawing.Size(233, 15);
+            this.lbl_Erg_Spannung_Zellenzahl.Size = new System.Drawing.Size(289, 20);
             this.lbl_Erg_Spannung_Zellenzahl.TabIndex = 1;
             this.lbl_Erg_Spannung_Zellenzahl.Text = "Der Akku hat eine Nennspannung von 3,7V";
             // 
@@ -200,7 +201,7 @@
             this.lbl_Erg_V_Zellen_Headline.Location = new System.Drawing.Point(30, 47);
             this.lbl_Erg_V_Zellen_Headline.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_Erg_V_Zellen_Headline.Name = "lbl_Erg_V_Zellen_Headline";
-            this.lbl_Erg_V_Zellen_Headline.Size = new System.Drawing.Size(62, 15);
+            this.lbl_Erg_V_Zellen_Headline.Size = new System.Drawing.Size(79, 20);
             this.lbl_Erg_V_Zellen_Headline.TabIndex = 0;
             this.lbl_Erg_V_Zellen_Headline.Text = "Spannung";
             // 
@@ -214,7 +215,7 @@
             this.grp_Spannung.Controls.Add(this.lbl_Akkuspannung);
             this.grp_Spannung.Controls.Add(this.ud_Zellen_N);
             this.grp_Spannung.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.grp_Spannung.Location = new System.Drawing.Point(13, 168);
+            this.grp_Spannung.Location = new System.Drawing.Point(13, 211);
             this.grp_Spannung.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.grp_Spannung.Name = "grp_Spannung";
             this.grp_Spannung.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -230,7 +231,7 @@
             this.lbl_V.Location = new System.Drawing.Point(390, 131);
             this.lbl_V.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_V.Name = "lbl_V";
-            this.lbl_V.Size = new System.Drawing.Size(14, 15);
+            this.lbl_V.Size = new System.Drawing.Size(18, 20);
             this.lbl_V.TabIndex = 6;
             this.lbl_V.Text = "V";
             this.lbl_V.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -250,7 +251,7 @@
             this.ud_Spannung.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.ud_Spannung.Name = "ud_Spannung";
             this.ud_Spannung.ReadOnly = true;
-            this.ud_Spannung.Size = new System.Drawing.Size(86, 23);
+            this.ud_Spannung.Size = new System.Drawing.Size(86, 27);
             this.ud_Spannung.TabIndex = 5;
             this.ud_Spannung.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.ud_Spannung.Value = new decimal(new int[] {
@@ -278,7 +279,7 @@
             this.cmb_Zellen_S.Location = new System.Drawing.Point(297, 83);
             this.cmb_Zellen_S.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.cmb_Zellen_S.Name = "cmb_Zellen_S";
-            this.cmb_Zellen_S.Size = new System.Drawing.Size(47, 23);
+            this.cmb_Zellen_S.Size = new System.Drawing.Size(47, 28);
             this.cmb_Zellen_S.TabIndex = 3;
             this.cmb_Zellen_S.SelectedIndexChanged += new System.EventHandler(this.cmb_Zellen_S_SelectedIndexChanged_1);
             // 
@@ -289,7 +290,7 @@
             this.opt_Spannung.Location = new System.Drawing.Point(30, 129);
             this.opt_Spannung.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.opt_Spannung.Name = "opt_Spannung";
-            this.opt_Spannung.Size = new System.Drawing.Size(172, 19);
+            this.opt_Spannung.Size = new System.Drawing.Size(213, 24);
             this.opt_Spannung.TabIndex = 2;
             this.opt_Spannung.TabStop = true;
             this.opt_Spannung.Text = "... die Spannung angegeben";
@@ -304,7 +305,7 @@
             this.opt_Anzahl_Zellen.Location = new System.Drawing.Point(30, 83);
             this.opt_Anzahl_Zellen.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.opt_Anzahl_Zellen.Name = "opt_Anzahl_Zellen";
-            this.opt_Anzahl_Zellen.Size = new System.Drawing.Size(209, 19);
+            this.opt_Anzahl_Zellen.Size = new System.Drawing.Size(263, 24);
             this.opt_Anzahl_Zellen.TabIndex = 1;
             this.opt_Anzahl_Zellen.TabStop = true;
             this.opt_Anzahl_Zellen.Text = "... die Anzahl der Zellen angegeben";
@@ -317,7 +318,7 @@
             this.lbl_Akkuspannung.Location = new System.Drawing.Point(25, 42);
             this.lbl_Akkuspannung.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_Akkuspannung.Name = "lbl_Akkuspannung";
-            this.lbl_Akkuspannung.Size = new System.Drawing.Size(107, 15);
+            this.lbl_Akkuspannung.Size = new System.Drawing.Size(130, 20);
             this.lbl_Akkuspannung.TabIndex = 0;
             this.lbl_Akkuspannung.Text = "Auf dem Akku ist...";
             // 
@@ -339,7 +340,7 @@
             0});
             this.ud_Zellen_N.Name = "ud_Zellen_N";
             this.ud_Zellen_N.ReadOnly = true;
-            this.ud_Zellen_N.Size = new System.Drawing.Size(86, 23);
+            this.ud_Zellen_N.Size = new System.Drawing.Size(86, 27);
             this.ud_Zellen_N.TabIndex = 7;
             this.ud_Zellen_N.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.ud_Zellen_N.Value = new decimal(new int[] {
@@ -352,6 +353,7 @@
             // 
             // grp_Typ
             // 
+            this.grp_Typ.Controls.Add(this.radioButton1);
             this.grp_Typ.Controls.Add(this.opt_Typ_NiCd);
             this.grp_Typ.Controls.Add(this.opt_Typ_NiMH);
             this.grp_Typ.Controls.Add(this.opt_Typ_Lipo);
@@ -360,7 +362,7 @@
             this.grp_Typ.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.grp_Typ.Name = "grp_Typ";
             this.grp_Typ.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.grp_Typ.Size = new System.Drawing.Size(449, 144);
+            this.grp_Typ.Size = new System.Drawing.Size(449, 187);
             this.grp_Typ.TabIndex = 4;
             this.grp_Typ.TabStop = false;
             this.grp_Typ.Text = "Typ";
@@ -369,10 +371,10 @@
             // 
             this.opt_Typ_NiCd.AutoSize = true;
             this.opt_Typ_NiCd.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.opt_Typ_NiCd.Location = new System.Drawing.Point(36, 102);
+            this.opt_Typ_NiCd.Location = new System.Drawing.Point(36, 142);
             this.opt_Typ_NiCd.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.opt_Typ_NiCd.Name = "opt_Typ_NiCd";
-            this.opt_Typ_NiCd.Size = new System.Drawing.Size(154, 19);
+            this.opt_Typ_NiCd.Size = new System.Drawing.Size(188, 24);
             this.opt_Typ_NiCd.TabIndex = 2;
             this.opt_Typ_NiCd.TabStop = true;
             this.opt_Typ_NiCd.Text = "NiCd (Nickel-Cadmium)";
@@ -383,13 +385,13 @@
             // 
             this.opt_Typ_NiMH.AutoSize = true;
             this.opt_Typ_NiMH.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.opt_Typ_NiMH.Location = new System.Drawing.Point(36, 64);
+            this.opt_Typ_NiMH.Location = new System.Drawing.Point(36, 72);
             this.opt_Typ_NiMH.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.opt_Typ_NiMH.Name = "opt_Typ_NiMH";
-            this.opt_Typ_NiMH.Size = new System.Drawing.Size(227, 19);
+            this.opt_Typ_NiMH.Size = new System.Drawing.Size(214, 24);
             this.opt_Typ_NiMH.TabIndex = 1;
             this.opt_Typ_NiMH.TabStop = true;
-            this.opt_Typ_NiMH.Text = "NiMH / eneloop (Nickel-Metallhydrid)";
+            this.opt_Typ_NiMH.Text = "NiMH (Nickel-Metallhydrid)";
             this.opt_Typ_NiMH.UseVisualStyleBackColor = true;
             this.opt_Typ_NiMH.CheckedChanged += new System.EventHandler(this.opt_Typ_NiMH_CheckedChanged_1);
             // 
@@ -398,10 +400,10 @@
             this.opt_Typ_Lipo.AutoSize = true;
             this.opt_Typ_Lipo.Checked = true;
             this.opt_Typ_Lipo.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.opt_Typ_Lipo.Location = new System.Drawing.Point(36, 26);
+            this.opt_Typ_Lipo.Location = new System.Drawing.Point(36, 37);
             this.opt_Typ_Lipo.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.opt_Typ_Lipo.Name = "opt_Typ_Lipo";
-            this.opt_Typ_Lipo.Size = new System.Drawing.Size(149, 19);
+            this.opt_Typ_Lipo.Size = new System.Drawing.Size(179, 24);
             this.opt_Typ_Lipo.TabIndex = 0;
             this.opt_Typ_Lipo.TabStop = true;
             this.opt_Typ_Lipo.Text = "LiPo (Lithium-Polymer)";
@@ -417,11 +419,11 @@
             this.grp_Verschiedenes.Controls.Add(this.lbl_Belastbarkeit);
             this.grp_Verschiedenes.Controls.Add(this.lbl_Kapazitaet);
             this.grp_Verschiedenes.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.grp_Verschiedenes.Location = new System.Drawing.Point(13, 361);
+            this.grp_Verschiedenes.Location = new System.Drawing.Point(13, 404);
             this.grp_Verschiedenes.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.grp_Verschiedenes.Name = "grp_Verschiedenes";
             this.grp_Verschiedenes.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.grp_Verschiedenes.Size = new System.Drawing.Size(449, 135);
+            this.grp_Verschiedenes.Size = new System.Drawing.Size(449, 140);
             this.grp_Verschiedenes.TabIndex = 8;
             this.grp_Verschiedenes.TabStop = false;
             // 
@@ -432,7 +434,7 @@
             this.lbl_C.Location = new System.Drawing.Point(390, 81);
             this.lbl_C.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_C.Name = "lbl_C";
-            this.lbl_C.Size = new System.Drawing.Size(15, 15);
+            this.lbl_C.Size = new System.Drawing.Size(18, 20);
             this.lbl_C.TabIndex = 13;
             this.lbl_C.Text = "C";
             this.lbl_C.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -444,7 +446,7 @@
             this.lbl_mAh.Location = new System.Drawing.Point(390, 45);
             this.lbl_mAh.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_mAh.Name = "lbl_mAh";
-            this.lbl_mAh.Size = new System.Drawing.Size(33, 15);
+            this.lbl_mAh.Size = new System.Drawing.Size(40, 20);
             this.lbl_mAh.TabIndex = 12;
             this.lbl_mAh.Text = "mAh";
             this.lbl_mAh.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -462,7 +464,7 @@
             0});
             this.ud_Belastbarkeit_C.Name = "ud_Belastbarkeit_C";
             this.ud_Belastbarkeit_C.ReadOnly = true;
-            this.ud_Belastbarkeit_C.Size = new System.Drawing.Size(86, 23);
+            this.ud_Belastbarkeit_C.Size = new System.Drawing.Size(86, 27);
             this.ud_Belastbarkeit_C.TabIndex = 11;
             this.ud_Belastbarkeit_C.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.ud_Belastbarkeit_C.Value = new decimal(new int[] {
@@ -495,7 +497,7 @@
             0});
             this.ud_Kapazitaet.Name = "ud_Kapazitaet";
             this.ud_Kapazitaet.ReadOnly = true;
-            this.ud_Kapazitaet.Size = new System.Drawing.Size(86, 23);
+            this.ud_Kapazitaet.Size = new System.Drawing.Size(86, 27);
             this.ud_Kapazitaet.TabIndex = 10;
             this.ud_Kapazitaet.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.ud_Kapazitaet.Value = new decimal(new int[] {
@@ -512,7 +514,7 @@
             this.lbl_Belastbarkeit.Location = new System.Drawing.Point(25, 82);
             this.lbl_Belastbarkeit.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_Belastbarkeit.Name = "lbl_Belastbarkeit";
-            this.lbl_Belastbarkeit.Size = new System.Drawing.Size(74, 15);
+            this.lbl_Belastbarkeit.Size = new System.Drawing.Size(95, 20);
             this.lbl_Belastbarkeit.TabIndex = 9;
             this.lbl_Belastbarkeit.Text = "Belastbarkeit";
             // 
@@ -523,7 +525,7 @@
             this.lbl_Kapazitaet.Location = new System.Drawing.Point(25, 43);
             this.lbl_Kapazitaet.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_Kapazitaet.Name = "lbl_Kapazitaet";
-            this.lbl_Kapazitaet.Size = new System.Drawing.Size(55, 15);
+            this.lbl_Kapazitaet.Size = new System.Drawing.Size(72, 20);
             this.lbl_Kapazitaet.TabIndex = 8;
             this.lbl_Kapazitaet.Text = "Kapazität";
             // 
@@ -538,11 +540,24 @@
             this.lbl_Pfeil.Text = "ð";
             this.lbl_Pfeil.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // radioButton1
+            // 
+            this.radioButton1.AutoSize = true;
+            this.radioButton1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioButton1.Location = new System.Drawing.Point(36, 107);
+            this.radioButton1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.radioButton1.Name = "radioButton1";
+            this.radioButton1.Size = new System.Drawing.Size(85, 24);
+            this.radioButton1.TabIndex = 3;
+            this.radioButton1.TabStop = true;
+            this.radioButton1.Text = "eneloop";
+            this.radioButton1.UseVisualStyleBackColor = true;
+            // 
             // AccuDataWindow
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1000, 505);
+            this.ClientSize = new System.Drawing.Size(1000, 558);
             this.Controls.Add(this.grp_Verschiedenes);
             this.Controls.Add(this.grp_Spannung);
             this.Controls.Add(this.grp_Typ);
@@ -556,7 +571,7 @@
             this.Name = "AccuDataWindow";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Flyer - Akkudaten berechnen";
-            this.Load += new System.EventHandler(this.formAkkudaten_Load);
+            this.Load += new System.EventHandler(this.AccuDataWindow_Load);
             this.grp_Ergebnisse.ResumeLayout(false);
             this.grp_Ergebnisse.PerformLayout();
             this.grp_Spannung.ResumeLayout(false);
@@ -606,5 +621,6 @@
         private System.Windows.Forms.NumericUpDown ud_Zellen_N;
         private System.Windows.Forms.Label lbl_Pfeil;
         private System.Windows.Forms.Label lbl_Erg_Laden_Kommentar;
+        private System.Windows.Forms.RadioButton radioButton1;
     }
 }

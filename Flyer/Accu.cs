@@ -1,118 +1,233 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace Flyer
 {
 
     public class Accu
     {
-
-        
+   
         //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-        // Konstanten
+        // Constants
         //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
-        private const double ZELLENSPG_LIPO = 3.7;
-        private const double ZELLENSPG_NIMH = 1.2;
-        private const double ZELLENSPG_NICD = 1.2;
+        private const double CELL_VOLTAGE_LIPO = 3.7;
+        private const double CELL_VOLTAGE_NIMH = 1.2;
+        private const double CELL_VOLTAGE_NICD = 1.2;
         
         
         //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-        // Eigenschaften
+        // Enumerations
         //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++        
         
-        // Liste der möglichen Akkutypen
-        public enum Akkutyp
+        // Accu type
+        public enum AccuType
         {
             LiPo,
             NiMH,
+            eneloop,
             NiCd
         }
 
-        // Akkutyp
-        // (Setzt automatisch die Zellenspannung)
-        private Akkutyp _eTyp;
-        public Akkutyp eTyp
+
+        //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+        // Properties
+        //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++        
+
+        /// <summary>
+        /// Accu type
+        /// </summary>
+        private AccuType _Type;
+        public AccuType Type
         {
-            get { return _eTyp; }
+            get { return _Type; }
 
             set
             {
-                _eTyp = value; 
+                _Type = value; 
                 
-                switch (_eTyp)
+                switch (_Type)
                 {
-                    case Akkutyp.LiPo: Zellenspannung = ZELLENSPG_LIPO;
+                    case AccuType.LiPo: 
+                        CellVoltage = CELL_VOLTAGE_LIPO;
+                        ChargeAccuType = Convert.ToString(Accu.AccuType.LiPo);
                         break;
-                    case Akkutyp.NiMH: Zellenspannung = ZELLENSPG_NIMH;
+
+                    case AccuType.NiMH:
+                        CellVoltage = CELL_VOLTAGE_NIMH;
+                        ChargeAccuType = Convert.ToString(Accu.AccuType.NiMH);
                         break;
-                    case Akkutyp.NiCd: Zellenspannung = ZELLENSPG_NICD;
+
+                    case AccuType.eneloop:
+                        CellVoltage = CELL_VOLTAGE_NIMH;
+                        ChargeAccuType = Convert.ToString(Accu.AccuType.NiMH);
+                        break;
+
+                    case AccuType.NiCd: 
+                        CellVoltage = CELL_VOLTAGE_NICD;
+                        ChargeAccuType = Convert.ToString(Accu.AccuType.NiCd);
                         break;
                 }
             }
         }
 
-        // Zellenspannung [V]
-        // (wird automatisch gesetzt beim Setzen des Akkutyps)
-        public double Zellenspannung { get; set; }
 
-        // Gibt an, ob die Zellenzahl angegeben ist
-        public bool ZellenzahlAngabe { get; set; }
+        /// <summary>
+        /// Cell voltage [V]
+        /// </summary>
+        public double CellVoltage { get; private set; }
+
+
+        /// <summary>
+        /// If the cell count is speficied
+        /// </summary>
+        public bool IsCellCountSpecified { get; private set; }
         
-        // Anzahl der Zellen
-        // (berechnet automatisch die Nennspannung, wenn Zellen angegeben sind)
-        private int _Zellenzahl;
-        public int Zellenzahl
+
+        /// <summary>
+        /// Cell count
+        /// </summary>
+        private int _CellCount;
+        public int CellCount
         {
-            get { return _Zellenzahl; }
-        
-            set 
+            get { return _CellCount; }
+
+            private set 
             {
-                _Zellenzahl = value;
-                if (ZellenzahlAngabe == true)
-                 Nennspannung = Zellenspannung * Zellenzahl;
+                _CellCount = value;
+                if (IsCellCountSpecified == true)
+                 RatedVoltage = CellVoltage * CellCount;
             }
         }
 
-        // Nennspannung [V]
-        // (berechnet automatische die Zellenzahl)
-        private double _Nennspannung;
-        public double Nennspannung 
-        {
-            get { return _Nennspannung; }
 
-            set
+        /// <summary>
+        /// Rated voltage [V]
+        /// </summary>
+        private double _RatedVoltage;
+        public double RatedVoltage 
+        {
+            get { return _RatedVoltage; }
+
+            private set
             {
-                _Nennspannung = value;
-                if (ZellenzahlAngabe == false)
-                    Zellenzahl = Convert.ToInt32(Nennspannung / Zellenspannung);
+                _RatedVoltage = value;
+                if (IsCellCountSpecified == false)
+                    CellCount = Convert.ToInt32(RatedVoltage / CellVoltage);
             }
         }
 
-        // Kapazität [mAh]
-        public int Kapazitaet { get; set; }
 
-        // Belastbarkeit [C]
-        // (berechnet automatisch die Belastbarkeit in A)
-        private int _iBelastbarkeit_C;
-        public int iBelastbarkeit_C
+        /// <summary>
+        /// Rated capacity [mAh]
+        /// </summary>
+        public int RatedCapacity { get; private set; }
+
+
+        /// <summary>
+        /// Load capacity [C]
+        /// </summary>
+        private int _LoadCapacityC;
+        public int LoadCapacityC
         {
-            get { return _iBelastbarkeit_C; }
+            get { return _LoadCapacityC; }
 
-            set
+            private set
             {
-                _iBelastbarkeit_C = value;
-                Belastbarkeit = (Kapazitaet * _iBelastbarkeit_C) / 1000.0;
+                _LoadCapacityC = value;
+                LoadCapacityA = (RatedCapacity * _LoadCapacityC) / 1000.0;
             }
         }
 
-        // Belastbarkeit [A]
-        public double Belastbarkeit { get; set; }
 
-        public string sLadetyp { get; set; }                // Am Ladegerät einzustellender Akkutyp
-        public int iLadestrom_mA { get; set; }              // Am Ladegerät einzustellender Ladestrom in mA
-        public double dLadestrom_A { get; set; }            // Am Ladegerät einzustellender Ladestrom in A
+        /// <summary>
+        /// Load capacity [A]
+        /// </summary>
+        public double LoadCapacityA { get; private set; }
+
+
+        /// <summary>
+        /// Accu type to be set on charging
+        /// </summary>
+        public string ChargeAccuType { get; private set; }
+
+
+        /// <summary>
+        /// Rated charge current [mA]
+        /// </summary>
+        public int ChargeCurrent { get; private set; }
+
+
+        //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+        // Methods
+        //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++  
+
+        /// <summary>
+        /// Calculates the accu values
+        /// </summary>
+        public void CalcValues()
+        {
+
+            // Spannung
+            // -----------------
+
+            // Wenn die Zellenzahl angegeben ist:
+            if (opt_Anzahl_Zellen.Checked == true)
+            {
+                // Zellen sind angegeben
+                IsCellCountSpecified = true;
+
+                // Wenn LiPo ausgewählt
+                if (opt_Typ_Lipo.Checked == true)
+                {
+                    cmb_Zellen_S.Visible = true;
+                    ud_Zellen_N.Visible = false;
+                    CellCount = cmb_Zellen_S.SelectedIndex + 1;
+                }
+                // Wenn kein LiPo ausgewählt
+                else
+                {
+                    cmb_Zellen_S.Visible = false;
+                    ud_Zellen_N.Visible = true;
+                    CellCount = Convert.ToInt32(ud_Zellen_N.Value);
+                }
+
+                ud_Spannung.Visible = false;
+                lbl_V.Visible = false;
+                lbl_Erg_V_Zellen_Headline.Text = "Spannung";
+            }
+
+            // Wenn die Spannung angegeben ist:
+            if (opt_Spannung.Checked == true)
+            {
+                // Zellen sind nicht angegeben
+                IsCellCountSpecified = false;
+
+                cmb_Zellen_S.Visible = false;
+                ud_Zellen_N.Visible = false;
+
+                ud_Spannung.Visible = true;
+
+                ud_Spannung.Increment = Convert.ToDecimal(AccuPack.CellVoltage);
+                RatedVoltage = Convert.ToDouble(ud_Spannung.Value);
+
+                lbl_V.Visible = true;
+                lbl_Erg_V_Zellen_Headline.Text = "Zellen";
+            }
+
+
+            // Capacity and Load capacity
+            // -----------------
+            RatedCapacity = Convert.ToInt32(ud_Kapazitaet.Value);
+            LoadCapacityC = Convert.ToInt32(ud_Belastbarkeit_C.Value);
+
+
+            // Charging accu type
+            // -----------------
+            if (Type == Accu.AccuType.LiPo)     { ChargeAccuType = Convert.ToString(Accu.AccuType.LiPo); }
+            if (Type == Accu.AccuType.NiMH)     { ChargeAccuType = Convert.ToString(Accu.AccuType.NiMH); }
+            if (Type == Accu.AccuType.eneloop)  { ChargeAccuType = Convert.ToString(Accu.AccuType.NiMH); }
+            if (Type == Accu.AccuType.NiCd)     { ChargeAccuType = Convert.ToString(Accu.AccuType.NiCd); }
+        }
+
 
     }
 }
