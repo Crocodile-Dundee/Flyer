@@ -2,4 +2,4 @@
 
 Calculating tool for RC planes
 
-(English version will follow)
+(German only - English version will follow)
