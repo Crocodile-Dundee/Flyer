@@ -1,5 +1,5 @@
 # Flyer
 
-Calculating tool for RC planes
+Tool to calculate RC planes
 
 (German only - English version will follow)
