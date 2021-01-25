@@ -10,7 +10,7 @@ namespace Flyer
         // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
         // Variablendeklarationen
         // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-        Accu AccuPack = new Accu();                   // Akku instanzieren
+        Accu AccuPack = new Accu();
 
 
         // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -31,24 +31,23 @@ namespace Flyer
             this.CenterToScreen();
 
             // - Type
-            opt_Typ_Lipo.Checked = true;
+            opt_Type_Lipo.Checked = true;
 
             // - Voltage
-            opt_Anzahl_Zellen.Checked = true;                   // Zellen angegeben
-            opt_Spannung.Checked = false;
+            opt_CellCount.Checked = true;
 
-            cmb_Zellen_S.Visible = true;                        // Combo-Boxen für die Akku-Zellenzahl
-            ud_Zellen_N.Visible = false;
+            cmb_CelCount_S.Visible = true;                        // Combo-Boxen für die Akku-Zellenzahl
+            nud_CellCount.Visible = false;
 
-            cmb_Zellen_S.SelectedIndex = 0;
-            ud_Zellen_N.Value = 8;
+            cmb_CelCount_S.SelectedIndex = 0;
+            nud_CellCount.Value = 8;
 
-            ud_Spannung.Value = Convert.ToDecimal(3.7);         // Zellenspannung LiPo
-            ud_Spannung.Increment = Convert.ToDecimal(3.7);
+            nud_Voltage.Value = Convert.ToDecimal(3.7);         // Zellenspannung LiPo
+            nud_Voltage.Increment = Convert.ToDecimal(3.7);
 
             // - Capacity and Load capacity
-            ud_Kapazitaet.Value = 2000;                         // Kapazität
-            ud_Belastbarkeit_C.Value = 20;                      // Belastbarkeit
+            nud_Capacity.Value = 2000;                         // Kapazität
+            nud_LoadCapacity_C.Value = 20;                      // Belastbarkeit
 
             // Calculate
             CalcAccuValues();
@@ -57,46 +56,61 @@ namespace Flyer
         // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
         // Auswahl: Typ
         // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-        private void opt_Typ_Lipo_CheckedChanged_1(object sender, EventArgs e)
+        private void opt_Type_Lipo_CheckedChanged(object sender, EventArgs e)
         {
-            if (opt_Typ_Lipo.Checked == true)
+            if (opt_Type_Lipo.Checked == true)
             {
-                ud_Spannung.Minimum = Convert.ToDecimal(AccuPack.CellVoltage);
-                ud_Spannung.Value = Convert.ToDecimal(AccuPack.CellVoltage);
-                lbl_Erg_Belastbarkeit_Headline.Visible = true;
-                lbl_Erg_Belastbarkeit_A.Visible = true;
-                lbl_Belastbarkeit.Visible = true;
-                ud_Belastbarkeit_C.Visible = true;
+                nud_Voltage.Minimum = Convert.ToDecimal(AccuPack.CellVoltage);
+                nud_Voltage.Value = Convert.ToDecimal(AccuPack.CellVoltage);
+                lbl_ResHeadline_LoadCapacity.Visible = true;
+                lbl_Res_LoadCapacity.Visible = true;
+                lbl_LoadCapacity.Visible = true;
+                nud_LoadCapacity_C.Visible = true;
                 lbl_C.Visible = true;
             }
             CalcAccuValues();
         }
 
-        private void opt_Typ_NiMH_CheckedChanged_1(object sender, EventArgs e)
+        private void opt_Type_NiMH_CheckedChanged(object sender, EventArgs e)
         {
-            if (opt_Typ_NiMH.Checked == true)
+            if (opt_Type_NiMH.Checked == true)
             {
-                ud_Spannung.Minimum = Convert.ToDecimal(AccuPack.CellVoltage);
-                ud_Spannung.Value = Convert.ToDecimal(AccuPack.CellVoltage);
-                lbl_Erg_Belastbarkeit_Headline.Visible = false;
-                lbl_Erg_Belastbarkeit_A.Visible = false;
-                lbl_Belastbarkeit.Visible = false;
-                ud_Belastbarkeit_C.Visible = false;
+                nud_Voltage.Minimum = Convert.ToDecimal(AccuPack.CellVoltage);
+                nud_Voltage.Value = Convert.ToDecimal(AccuPack.CellVoltage);
+                lbl_ResHeadline_LoadCapacity.Visible = false;
+                lbl_Res_LoadCapacity.Visible = false;
+                lbl_LoadCapacity.Visible = false;
+                nud_LoadCapacity_C.Visible = false;
                 lbl_C.Visible = false;
             }
            CalcAccuValues();
         }
 
-        private void opt_Typ_NiCd_CheckedChanged_1(object sender, EventArgs e)
+        private void opt_Type_eneloop_CheckedChanged(object sender, EventArgs e)
         {
-            if (opt_Typ_NiCd.Checked == true)
+            if (opt_Type_NiMH.Checked == true)
             {
-                ud_Spannung.Minimum = Convert.ToDecimal(AccuPack.CellVoltage);
-                ud_Spannung.Value = Convert.ToDecimal(AccuPack.CellVoltage);
-                lbl_Erg_Belastbarkeit_Headline.Visible = false;
-                lbl_Erg_Belastbarkeit_A.Visible = false;
-                lbl_Belastbarkeit.Visible = false;
-                ud_Belastbarkeit_C.Visible = false;
+                nud_Voltage.Minimum = Convert.ToDecimal(AccuPack.CellVoltage);
+                nud_Voltage.Value = Convert.ToDecimal(AccuPack.CellVoltage);
+                lbl_ResHeadline_LoadCapacity.Visible = false;
+                lbl_Res_LoadCapacity.Visible = false;
+                lbl_LoadCapacity.Visible = false;
+                nud_LoadCapacity_C.Visible = false;
+                lbl_C.Visible = false;
+            }
+            CalcAccuValues();
+        }
+
+        private void opt_Type_NiCd_CheckedChanged(object sender, EventArgs e)
+        {
+            if (opt_Type_NiCd.Checked == true)
+            {
+                nud_Voltage.Minimum = Convert.ToDecimal(AccuPack.CellVoltage);
+                nud_Voltage.Value = Convert.ToDecimal(AccuPack.CellVoltage);
+                lbl_ResHeadline_LoadCapacity.Visible = false;
+                lbl_Res_LoadCapacity.Visible = false;
+                lbl_LoadCapacity.Visible = false;
+                nud_LoadCapacity_C.Visible = false;
                 lbl_C.Visible = false;
             }
             CalcAccuValues();
@@ -105,32 +119,32 @@ namespace Flyer
         // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
         // Auswahl: Spannung
         // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-        private void opt_Anzahl_Zellen_CheckedChanged(object sender, EventArgs e)
+        private void opt_CellCount_CheckedChanged(object sender, EventArgs e)
         {
             CalcAccuValues();
         }
 
-        private void opt_Spannung_CheckedChanged_1(object sender, EventArgs e)
+        private void opt_Voltage_CheckedChanged_1(object sender, EventArgs e)
         {
-            if (opt_Spannung.Checked == true)
+            if (opt_Voltage.Checked == true)
             {
-                ud_Spannung.Minimum = Convert.ToDecimal(AccuPack.CellVoltage);
-                ud_Spannung.Value = Convert.ToDecimal(AccuPack.CellVoltage);
+                nud_Voltage.Minimum = Convert.ToDecimal(AccuPack.CellVoltage);
+                nud_Voltage.Value = Convert.ToDecimal(AccuPack.CellVoltage);
             }
             CalcAccuValues();
         }
 
-        private void ud_Zellen_N_ValueChanged(object sender, EventArgs e)
+        private void nud_CellCount_ValueChanged(object sender, EventArgs e)
         {
             CalcAccuValues();
         }
 
-        private void cmb_Zellen_S_SelectedIndexChanged_1(object sender, EventArgs e)
+        private void cmb_CellCount_S_SelectedIndexChanged_1(object sender, EventArgs e)
         {
             CalcAccuValues();
         }
 
-        private void ud_Spannung_ValueChanged(object sender, EventArgs e)
+        private void nud_Voltage_ValueChanged(object sender, EventArgs e)
         {
             CalcAccuValues();
         }
@@ -138,12 +152,12 @@ namespace Flyer
         // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
         // Auswahl: Kapazität und Belastbarkeit
         // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-        private void ud_Kapazitaet_ValueChanged_1(object sender, EventArgs e)
+        private void nud_Capacity_ValueChanged(object sender, EventArgs e)
         {
             CalcAccuValues();
         }
 
-        private void ud_Belastbarkeit_C_ValueChanged(object sender, EventArgs e)
+        private void nud_LoadCapacity_C_ValueChanged(object sender, EventArgs e)
         {
             CalcAccuValues();
         }
@@ -161,22 +175,23 @@ namespace Flyer
             // Show values     
 
             // - Spannung
-            if (opt_Anzahl_Zellen.Checked == true)
-                lbl_Erg_Spannung_Zellenzahl.Text = Convert.ToString(string.Format("Der Akku hat eine Nennspannung von {0:0.0} V", AccuPack.RatedVoltage));
+            if (opt_CellCount.Checked == true)
+                lbl_Res_Voltage_CellCount.Text = Convert.ToString(string.Format("Der Akku hat eine Nennspannung von {0:0.0} V", AccuPack.RatedVoltage));
 
             // - Zellen
             else
                 if (AccuPack.CellCount == 1)
-                    lbl_Erg_Spannung_Zellenzahl.Text = Convert.ToString(string.Format("Der Akku hat 1 Zelle.", AccuPack.CellCount));
+                    lbl_Res_Voltage_CellCount.Text = Convert.ToString(string.Format("Der Akku hat 1 Zelle.", AccuPack.CellCount));
                 else
-                    lbl_Erg_Spannung_Zellenzahl.Text = Convert.ToString(string.Format("Der Akku hat {0} Zellen.", AccuPack.CellCount));
+                    lbl_Res_Voltage_CellCount.Text = Convert.ToString(string.Format("Der Akku hat {0} Zellen.", AccuPack.CellCount));
 
             // - Belastbarkeit
-            lbl_Erg_Belastbarkeit_A.Text = Convert.ToString(string.Format("Der Akku ist belastbar mit max. {0:0.0} A.", AccuPack.AmpLoadCapacity));
+            lbl_Res_LoadCapacity.Text = Convert.ToString(string.Format("Der Akku ist belastbar mit max. {0:0.0} A.", AccuPack.AmpLoadCapacity));
         
             // - Laden
-            lbl_Erg_Laden_AkkuTyp.Text = AccuPack.ChargeAccuType;
+            lbl_Res_AccuType.Text = AccuPack.ChargeAccuType;
         }
+
 
     }
 }
