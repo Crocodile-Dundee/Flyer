@@ -166,23 +166,23 @@ namespace Flyer
         public void CalcValues()
         {
 
-            // Spannung
+            // Voltage
             // -----------------
 
-            // Wenn die Zellenzahl angegeben ist:
+            // If cell count was entered:
             if (opt_Anzahl_Zellen.Checked == true)
             {
-                // Zellen sind angegeben
+                // Cell count is entered
                 IsCellCountSpecified = true;
 
-                // Wenn LiPo ausgewählt
+                // Type "Lipo" is selected
                 if (opt_Typ_Lipo.Checked == true)
                 {
                     cmb_Zellen_S.Visible = true;
                     ud_Zellen_N.Visible = false;
                     CellCount = cmb_Zellen_S.SelectedIndex + 1;
                 }
-                // Wenn kein LiPo ausgewählt
+                // Type "Lipo" is not selected
                 else
                 {
                     cmb_Zellen_S.Visible = false;
@@ -195,10 +195,10 @@ namespace Flyer
                 lbl_Erg_V_Zellen_Headline.Text = "Spannung";
             }
 
-            // Wenn die Spannung angegeben ist:
+            // Voltage is entered:
             if (opt_Spannung.Checked == true)
             {
-                // Zellen sind nicht angegeben
+                // Cell count is not entered
                 IsCellCountSpecified = false;
 
                 cmb_Zellen_S.Visible = false;
