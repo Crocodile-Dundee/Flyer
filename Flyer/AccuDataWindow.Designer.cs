@@ -292,10 +292,9 @@
             this.opt_Voltage.Name = "opt_Voltage";
             this.opt_Voltage.Size = new System.Drawing.Size(213, 24);
             this.opt_Voltage.TabIndex = 2;
-            this.opt_Voltage.TabStop = true;
             this.opt_Voltage.Text = "... die Spannung angegeben";
             this.opt_Voltage.UseVisualStyleBackColor = true;
-            this.opt_Voltage.CheckedChanged += new System.EventHandler(this.opt_Voltage_CheckedChanged_1);
+            this.opt_Voltage.CheckedChanged += new System.EventHandler(this.opt_Voltage_CheckedChanged);
             // 
             // opt_CellCount
             // 
@@ -377,7 +376,6 @@
             this.opt_Type_eneloop.Name = "opt_Type_eneloop";
             this.opt_Type_eneloop.Size = new System.Drawing.Size(85, 24);
             this.opt_Type_eneloop.TabIndex = 3;
-            this.opt_Type_eneloop.TabStop = true;
             this.opt_Type_eneloop.Text = "eneloop";
             this.opt_Type_eneloop.UseVisualStyleBackColor = true;
             this.opt_Type_eneloop.CheckedChanged += new System.EventHandler(this.opt_Type_eneloop_CheckedChanged);
@@ -391,7 +389,6 @@
             this.opt_Type_NiCd.Name = "opt_Type_NiCd";
             this.opt_Type_NiCd.Size = new System.Drawing.Size(188, 24);
             this.opt_Type_NiCd.TabIndex = 2;
-            this.opt_Type_NiCd.TabStop = true;
             this.opt_Type_NiCd.Text = "NiCd (Nickel-Cadmium)";
             this.opt_Type_NiCd.UseVisualStyleBackColor = true;
             this.opt_Type_NiCd.CheckedChanged += new System.EventHandler(this.opt_Type_NiCd_CheckedChanged);
@@ -405,7 +402,6 @@
             this.opt_Type_NiMH.Name = "opt_Type_NiMH";
             this.opt_Type_NiMH.Size = new System.Drawing.Size(214, 24);
             this.opt_Type_NiMH.TabIndex = 1;
-            this.opt_Type_NiMH.TabStop = true;
             this.opt_Type_NiMH.Text = "NiMH (Nickel-Metallhydrid)";
             this.opt_Type_NiMH.UseVisualStyleBackColor = true;
             this.opt_Type_NiMH.CheckedChanged += new System.EventHandler(this.opt_Type_NiMH_CheckedChanged);
@@ -413,14 +409,12 @@
             // opt_Type_Lipo
             // 
             this.opt_Type_Lipo.AutoSize = true;
-            this.opt_Type_Lipo.Checked = true;
             this.opt_Type_Lipo.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.opt_Type_Lipo.Location = new System.Drawing.Point(36, 37);
             this.opt_Type_Lipo.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.opt_Type_Lipo.Name = "opt_Type_Lipo";
             this.opt_Type_Lipo.Size = new System.Drawing.Size(179, 24);
             this.opt_Type_Lipo.TabIndex = 0;
-            this.opt_Type_Lipo.TabStop = true;
             this.opt_Type_Lipo.Text = "LiPo (Lithium-Polymer)";
             this.opt_Type_Lipo.UseVisualStyleBackColor = true;
             this.opt_Type_Lipo.CheckedChanged += new System.EventHandler(this.opt_Type_Lipo_CheckedChanged);
@@ -516,7 +510,7 @@
             this.nud_Capacity.TabIndex = 10;
             this.nud_Capacity.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.nud_Capacity.Value = new decimal(new int[] {
-            1100,
+            2000,
             0,
             0,
             0});

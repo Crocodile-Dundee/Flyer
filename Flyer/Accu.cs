@@ -79,7 +79,7 @@ namespace Flyer
         /// <summary>
         /// If the cell count is speficied
         /// </summary>
-        public bool IsCellCountSpecified { get; private set; }
+        public bool IsCellCountSpecified { get; set; }
         
 
         /// <summary>
@@ -94,7 +94,10 @@ namespace Flyer
             {
                 _CellCount = value;
                 if (IsCellCountSpecified == true)
-                 RatedVoltage = CellVoltage * CellCount;
+                {
+                    RatedVoltage = CellVoltage * CellCount;
+                }
+ 
             }
         }
 
@@ -111,7 +114,9 @@ namespace Flyer
             {
                 _RatedVoltage = value;
                 if (IsCellCountSpecified == false)
+                {
                     CellCount = Convert.ToInt32(RatedVoltage / CellVoltage);
+                }
             }
         }
 
@@ -166,58 +171,58 @@ namespace Flyer
         public void CalcValues()
         {
 
-            // Voltage
-            // -----------------
+            //// Voltage
+            //// -----------------
 
-            // If cell count was entered:
-            if (opt_Anzahl_Zellen.Checked == true)
-            {
-                // Cell count is entered
-                IsCellCountSpecified = true;
+            //// If cell count was entered:
+            //if (opt_Anzahl_Zellen.Checked == true)
+            //{
+            //    // Cell count is entered
+            //    IsCellCountSpecified = true;
 
-                // Type "Lipo" is selected
-                if (opt_Typ_Lipo.Checked == true)
-                {
-                    cmb_Zellen_S.Visible = true;
-                    ud_Zellen_N.Visible = false;
-                    CellCount = cmb_Zellen_S.SelectedIndex + 1;
-                }
-                // Type "Lipo" is not selected
-                else
-                {
-                    cmb_Zellen_S.Visible = false;
-                    ud_Zellen_N.Visible = true;
-                    CellCount = Convert.ToInt32(ud_Zellen_N.Value);
-                }
+            //    // Type "Lipo" is selected
+            //    if (opt_Typ_Lipo.Checked == true)
+            //    {
+            //        cmb_Zellen_S.Visible = true;
+            //        ud_Zellen_N.Visible = false;
+            //        CellCount = cmb_Zellen_S.SelectedIndex + 1;
+            //    }
+            //    // Type "Lipo" is not selected
+            //    else
+            //    {
+            //        cmb_Zellen_S.Visible = false;
+            //        ud_Zellen_N.Visible = true;
+            //        CellCount = Convert.ToInt32(ud_Zellen_N.Value);
+            //    }
 
-                ud_Spannung.Visible = false;
-                lbl_V.Visible = false;
-                lbl_Erg_V_Zellen_Headline.Text = "Spannung";
-            }
+            //    ud_Spannung.Visible = false;
+            //    lbl_V.Visible = false;
+            //    lbl_Erg_V_Zellen_Headline.Text = "Spannung";
+            //}
 
-            // Voltage is entered:
-            if (opt_Spannung.Checked == true)
-            {
-                // Cell count is not entered
-                IsCellCountSpecified = false;
+            //// Voltage is entered:
+            //if (opt_Spannung.Checked == true)
+            //{
+            //    // Cell count is not entered
+            //    IsCellCountSpecified = false;
 
-                cmb_Zellen_S.Visible = false;
-                ud_Zellen_N.Visible = false;
+            //    cmb_Zellen_S.Visible = false;
+            //    ud_Zellen_N.Visible = false;
 
-                ud_Spannung.Visible = true;
+            //    ud_Spannung.Visible = true;
 
-                ud_Spannung.Increment = Convert.ToDecimal(AccuPack.CellVoltage);
-                RatedVoltage = Convert.ToDouble(ud_Spannung.Value);
+            //    ud_Spannung.Increment = Convert.ToDecimal(AccuPack.CellVoltage);
+            //    RatedVoltage = Convert.ToDouble(ud_Spannung.Value);
 
-                lbl_V.Visible = true;
-                lbl_Erg_V_Zellen_Headline.Text = "Zellen";
-            }
+            //    lbl_V.Visible = true;
+            //    lbl_Erg_V_Zellen_Headline.Text = "Zellen";
+            //}
 
 
-            // Capacity and Load capacity
-            // -----------------
-            RatedCapacity = Convert.ToInt32(ud_Kapazitaet.Value);
-            LoadCapacityC = Convert.ToInt32(ud_Belastbarkeit_C.Value);
+            //// Capacity and Load capacity
+            //// -----------------
+            //RatedCapacity = Convert.ToInt32(ud_Kapazitaet.Value);
+            //LoadCapacityC = Convert.ToInt32(ud_Belastbarkeit_C.Value);
 
 
             // Charging accu type

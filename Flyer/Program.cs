@@ -15,7 +15,7 @@ namespace Flyer
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new SelectorWindow());
+            Application.Run(new MainWindow());
         }
     }
 

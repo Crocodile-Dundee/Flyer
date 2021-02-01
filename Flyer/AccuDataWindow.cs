@@ -47,30 +47,15 @@ namespace Flyer
         private void AccuDataWindow_Load(object sender, EventArgs e)
         {
             // Form
-            this.Size = new Size(1016, 544);
+            this.Size = new Size(1018, 595);
             this.CenterToScreen();
 
-            // - Type
+            // - Set Type
             opt_Type_Lipo.Checked = true;
 
-            // - Voltage
+            // - Set Voltage
             opt_CellCount.Checked = true;
-
-            cmb_CelCount_S.Visible = true;
-            nud_CellCount.Visible = false;
-
             cmb_CelCount_S.SelectedIndex = 0;
-            nud_CellCount.Value = 8;
-
-            nud_Voltage.Value = Convert.ToDecimal(3.7);
-            nud_Voltage.Increment = Convert.ToDecimal(3.7);
-
-            // - Capacity and Load capacity
-            nud_Capacity.Value = 2000;
-            nud_LoadCapacity_C.Value = 20;
-
-            // Calculate
-            CalcAccuValues();
         }
 
 
@@ -79,6 +64,9 @@ namespace Flyer
         // ---------------------------------------------------------------------------------
         // Controls
         // ---------------------------------------------------------------------------------
+
+        // Type
+        // +++++++++++++++++++++++++++++++++++++++++++++++
 
         /// <summary>
         /// RadioButton: Accu Type "Lipo" changed
@@ -160,6 +148,10 @@ namespace Flyer
             CalcAccuValues();
         }
 
+
+        // Voltage
+        // +++++++++++++++++++++++++++++++++++++++++++++++
+
         /// <summary>
         /// RadioButton: Cell count changed
         /// </summary>
@@ -175,15 +167,38 @@ namespace Flyer
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void opt_Voltage_CheckedChanged_1(object sender, EventArgs e)
+        private void opt_Voltage_CheckedChanged(object sender, EventArgs e)
         {
-            if (opt_Voltage.Checked == true)
+            if (opt_Voltage.Checked)
             {
+                nud_Voltage.Visible = true;
+                lbl_V.Visible = true;
+
+                cmb_CelCount_S.Visible = false;
+                nud_CellCount.Visible = false;
+
                 nud_Voltage.Minimum = Convert.ToDecimal(AccuPack.CellVoltage);
                 nud_Voltage.Value = Convert.ToDecimal(AccuPack.CellVoltage);
             }
+            else
+            {
+                nud_Voltage.Visible = false;
+                lbl_V.Visible = false;
+
+                if (AccuPack.Type == Accu.AccuType.LiPo)
+                {
+                    cmb_CelCount_S.Visible = true;
+                    nud_CellCount.Visible = false;
+                }
+                else
+                {
+                    cmb_CelCount_S.Visible = false;
+                    nud_CellCount.Visible = true;
+                }
+            }
             CalcAccuValues();
         }
+
 
         /// <summary>
         /// NumericUpDown: Cell count
@@ -214,6 +229,10 @@ namespace Flyer
         {
             CalcAccuValues();
         }
+
+
+        // Capacity and Load capacity
+        // +++++++++++++++++++++++++++++++++++++++++++++++
 
         /// <summary>
         /// NumericUpDown: Capacity
@@ -246,6 +265,23 @@ namespace Flyer
         /// </summary>
         public void CalcAccuValues()
         {
+            // Read valuea 
+
+            // - Accu type
+            if (opt_Type_Lipo.Checked)    { AccuPack.Type = Accu.AccuType.LiPo; }
+            if (opt_Type_NiMH.Checked)    { AccuPack.Type = Accu.AccuType.NiMH; }
+            if (opt_Type_eneloop.Checked) { AccuPack.Type = Accu.AccuType.eneloop; }
+            if (opt_Type_NiCd.Checked)    { AccuPack.Type = Accu.AccuType.NiCd; }
+
+            // - Voltage
+            if (opt_CellCount.Checked)
+            {
+                AccuPack.IsCellCountSpecified = true;
+            }
+            else
+            {
+
+            }
 
             // Calculate values
             AccuPack.CalcValues();
@@ -254,17 +290,25 @@ namespace Flyer
 
             // - Voltage
             if (opt_CellCount.Checked == true)
+            {
                 lbl_Res_Voltage_CellCount.Text = Convert.ToString(string.Format("Der Akku hat eine Nennspannung von {0:0.0} V", AccuPack.RatedVoltage));
-
+            }
             // - Cell count
             else
+            {
                 if (AccuPack.CellCount == 1)
+                {
                     lbl_Res_Voltage_CellCount.Text = Convert.ToString(string.Format("Der Akku hat 1 Zelle.", AccuPack.CellCount));
+                }
                 else
+                {
                     lbl_Res_Voltage_CellCount.Text = Convert.ToString(string.Format("Der Akku hat {0} Zellen.", AccuPack.CellCount));
+                }
+            }
+
 
             // - Load capacity
-            lbl_Res_LoadCapacity.Text = Convert.ToString(string.Format("Der Akku ist belastbar mit max. {0:0.0} A.", AccuPack.AmpLoadCapacity));
+            lbl_Res_LoadCapacity.Text = Convert.ToString(string.Format("Der Akku ist belastbar mit max. {0:0.0} A.", AccuPack.LoadCapacityA));
         
             // - Charging
             lbl_Res_AccuType.Text = AccuPack.ChargeAccuType;
